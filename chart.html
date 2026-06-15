@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USMNT Fatigue Index 2026 — Action Network</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Inter,system-ui,sans-serif;background:#fff;color:#0d1117;}
+.wrap{max-width:780px;margin:0 auto;}
+
+.hdr{padding:22px 28px 18px;border-bottom:1px solid #e8eef2;position:relative;}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#00C853,#69f0ae,#00C853);background-size:200% 100%;animation:sh 2.4s linear infinite;}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#00C853;margin-bottom:7px;}
+.hdr-title{font-size:clamp(15px,2.4vw,19px);font-weight:800;color:#0d1117;letter-spacing:-0.01em;line-height:1.2;margin-bottom:4px;}
+.hdr-sub{font-size:12px;color:#8a9ab0;}
+
+.tabs{display:flex;gap:0;border-bottom:1px solid #e8eef2;padding:0 28px;}
+.tab{font-family:inherit;font-size:12px;font-weight:700;padding:10px 16px;border:none;background:none;color:#8a9ab0;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;}
+.tab:hover{color:#2d3748;}
+.tab.active{color:#00C853;border-bottom-color:#00C853;}
+
+.legend-row{display:flex;gap:20px;padding:11px 28px;border-bottom:1px solid #e8eef2;flex-wrap:wrap;}
+.leg{display:flex;align-items:center;gap:6px;font-size:12px;color:#4a5568;}
+.leg-dot{width:10px;height:10px;border-radius:50%;}
+
+.bars{padding:10px 28px 16px;}
+
+.p-row{
+  display:grid;
+  grid-template-columns:26px 156px 1fr 58px;
+  align-items:center;
+  gap:10px;
+  padding:5px 0;
+  border-bottom:1px solid #f5f7fa;
+}
+.p-row:last-child{border-bottom:none;}
+
+.p-rank{font-size:11px;font-weight:600;color:#c0cdd8;text-align:right;}
+.p-info{min-width:0;}
+.p-name{font-size:13px;font-weight:700;color:#0d1117;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.p-club{font-size:11px;color:#8a9ab0;display:block;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+.bar-track{height:10px;background:#f0f4f8;border-radius:5px;position:relative;overflow:visible;}
+.bar-fill{height:100%;border-radius:5px;}
+.bar-lbl{position:absolute;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;white-space:nowrap;}
+.bar-lbl.in{right:7px;color:rgba(255,255,255,0.9);}
+.bar-lbl.out{color:#8a9ab0;}
+
+.p-val{font-size:12px;font-weight:700;color:#4a5568;text-align:right;white-space:nowrap;}
+.p-val.hi{color:#00C853;}
+
+.ftr{padding:12px 28px;border-top:1px solid #e8eef2;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.ftr-note{font-size:11px;color:#c0cdd8;line-height:1.5;max-width:420px;}
+.brand{font-size:12px;font-weight:800;color:#00C853;letter-spacing:.04em;white-space:nowrap;}
+.brand span{color:#c0cdd8;font-weight:400;}
+
+@media(max-width:600px){
+  .hdr,.tabs,.legend-row,.bars,.ftr{padding-left:16px;padding-right:16px;}
+  .p-row{grid-template-columns:22px 120px 1fr 46px;gap:7px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr">
+  <div class="eyebrow">Action Network · World Cup 2026 · Data Study</div>
+  <div class="hdr-title">USMNT Fatigue Index: Minutes Played Since August 2025</div>
+  <div class="hdr-sub">All 26 USA World Cup squad members · Club + international · Club World Cup excluded</div>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-tab="total">Total Minutes</button>
+  <button class="tab" data-tab="club">Club Minutes</button>
+  <button class="tab" data-tab="mpg">Mins per Game</button>
+</div>
+
+<div class="legend-row">
+  <div class="leg"><div class="leg-dot" style="background:#1a2640;"></div>Most fatigued</div>
+  <div class="leg"><div class="leg-dot" style="background:#8fa8be;"></div>Least fatigued</div>
+  <div class="leg"><div class="leg-dot" style="background:#f5a623;"></div>MLS-based</div>
+</div>
+
+<div class="bars" id="bars"></div>
+
+<div class="ftr">
+  <div class="ftr-note">Source: Better Collective — Games &amp; Minutes, World Cup 2026 Squads. Aug 2025–Jun 2026. Club World Cup excluded.</div>
+  <div class="brand">ACTION<span> NETWORK</span></div>
+</div>
+
+</div>
+
+<script>
+const PLAYERS=[
+  {name:"Chris Richards",   club:"Crystal Palace",    mls:false,total:4609,clubM:4221,games:55},
+  {name:"Weston McKennie",  club:"Juventus",          mls:false,total:4219,clubM:3920,games:53},
+  {name:"Auston Trusty",    club:"Celtic",            mls:false,total:3780,clubM:3556,games:44},
+  {name:"Folarin Balogun",  club:"Monaco",            mls:false,total:3709,clubM:3251,games:52},
+  {name:"Matt Freese",      club:"NY City FC",        mls:true, total:3667,clubM:3037,games:41},
+  {name:"Timothy Weah",     club:"Marseille",         mls:false,total:3514,clubM:3139,games:47},
+  {name:"S. Berhalter",     club:"Vancouver WC",      mls:true, total:3408,clubM:3048,games:42},
+  {name:"Sergiño Dest",     club:"PSV",               mls:false,total:3263,clubM:3004,games:43},
+  {name:"Mark McKenzie",    club:"Toulouse",          mls:false,total:3120,clubM:2787,games:40},
+  {name:"Max Arfsten",      club:"Columbus Crew",     mls:true, total:3107,clubM:2626,games:39},
+  {name:"Cristian Roldan",  club:"Seattle Sounders",  mls:true, total:3054,clubM:2666,games:42},
+  {name:"Joe Scally",       club:"B. M'gladbach",     mls:false,total:2946,clubM:2792,games:39},
+  {name:"Haji Wright",      club:"Coventry City",     mls:false,total:2882,clubM:2749,games:46},
+  {name:"Brenden Aaronson", club:"Leeds United",      mls:false,total:2876,clubM:2744,games:46},
+  {name:"Tim Ream",         club:"Charlotte FC",      mls:true, total:2668,clubM:2190,games:31},
+  {name:"Malik Tillman",    club:"Bayer Leverkusen",  mls:false,total:2608,clubM:2335,games:46},
+  {name:"Chris Brady",      club:"Chicago Fire FC",   mls:true, total:2565,clubM:2520,games:29},
+  {name:"Álex Zendejas",    club:"Club América",      mls:false,total:2337,clubM:2239,games:33},
+  {name:"Matt Turner",      club:"NE Revolution",     mls:true, total:2295,clubM:2160,games:26},
+  {name:"Miles Robinson",   club:"FC Cincinnati",     mls:true, total:2205,clubM:1917,games:29},
+  {name:"Christian Pulisic",club:"Milan",             mls:false,total:2169,clubM:1805,games:41},
+  {name:"Tyler Adams",      club:"Bournemouth",       mls:false,total:1967,clubM:1794,games:29},
+  {name:"Alex Freeman",     club:"Villarreal",        mls:false,total:1941,clubM:1443,games:32},
+  {name:"Antonee Robinson", club:"Fulham",            mls:false,total:1940,clubM:1786,games:29},
+  {name:"Ricardo Pepi",     club:"PSV",               mls:false,total:1785,clubM:1706,games:37},
+  {name:"Giovanni Reyna",   club:"B. M'gladbach",     mls:false,total:758, clubM:578, games:25},
+];
+
+// Dark (rank 1) to light (rank 26) for non-MLS; amber for MLS
+function barColor(rank, total, isMls) {
+  if (isMls) return '#f5a623';
+  const t = (rank - 1) / (total - 1); // 0 = darkest, 1 = lightest
+  const r1=26,  g1=38,  b1=64;   // dark #1a2640
+  const r2=143, g2=168, b2=190;  // light #8fa8be
+  const r = Math.round(r1 + (r2-r1)*t);
+  const g = Math.round(g1 + (g2-g1)*t);
+  const b = Math.round(b1 + (b2-b1)*t);
+  return `rgb(${r},${g},${b})`;
+}
+
+let tab = 'total';
+function val(p){ return tab==='total'?p.total:tab==='club'?p.clubM:Math.round(p.total/p.games); }
+function unit(){ return tab==='mpg'?' mpg':''; }
+
+function render(){
+  const sorted = [...PLAYERS].sort((a,b) => val(b)-val(a));
+  const maxVal = val(sorted[0]);
+  const container = document.getElementById('bars');
+  container.innerHTML = '';
+
+  sorted.forEach((p, i) => {
+    const v = val(p);
+    const pct = (v / maxVal * 100).toFixed(1);
+    const color = barColor(i + 1, sorted.length, p.mls);
+    const isLong = parseFloat(pct) >= 28;
+
+    const row = document.createElement('div');
+    row.className = 'p-row';
+    row.innerHTML = `
+      <div class="p-rank">#${i+1}</div>
+      <div class="p-info">
+        <span class="p-name">${p.name}</span>
+        <span class="p-club">${p.club}</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${pct}%;background:${color};">
+          ${isLong ? `<span class="bar-lbl in">${v.toLocaleString()}${unit()}</span>` : ''}
+        </div>
+        ${!isLong ? `<span class="bar-lbl out" style="left:calc(${pct}% + 6px)">${v.toLocaleString()}${unit()}</span>` : ''}
+      </div>
+      <div class="p-val${i<2?' hi':''}">${v.toLocaleString()}</div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+document.getElementById('tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab');
+  if(!btn) return;
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  tab = btn.dataset.tab;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
