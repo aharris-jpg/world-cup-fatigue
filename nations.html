@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Cup 2026 Squad Fatigue by Nation — Action Network</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Inter,system-ui,sans-serif;background:#fff;color:#0d1117;}
+.wrap{max-width:780px;margin:0 auto;}
+
+.hdr{padding:22px 28px 18px;border-bottom:1px solid #e8eef2;position:relative;}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#00C853,#69f0ae,#00C853);background-size:200% 100%;animation:sh 2.4s linear infinite;}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#00C853;margin-bottom:7px;}
+.hdr-title{font-size:clamp(15px,2.4vw,19px);font-weight:800;color:#0d1117;letter-spacing:-0.01em;line-height:1.2;margin-bottom:4px;}
+.hdr-sub{font-size:12px;color:#8a9ab0;}
+
+.legend-row{display:flex;gap:22px;flex-wrap:wrap;padding:11px 28px;border-bottom:1px solid #e8eef2;}
+.leg{display:flex;align-items:center;gap:7px;font-size:12px;color:#4a5568;}
+.leg-bar{width:14px;height:8px;border-radius:2px;}
+.leg-dots{display:flex;align-items:center;gap:4px;}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.leg-line{width:18px;height:1.5px;background:#dde4ec;}
+
+.bars{padding:14px 28px 16px;}
+
+.n-block{margin-bottom:18px;}
+.n-block:last-child{margin-bottom:0;}
+
+.n-meta{
+  display:grid;
+  grid-template-columns:24px 1fr auto;
+  align-items:baseline;
+  gap:8px;
+  margin-bottom:5px;
+}
+.n-num{font-size:11px;font-weight:700;color:#c0cdd8;text-align:right;}
+.n-name{font-size:13px;font-weight:700;color:#2d3748;}
+.n-name.usa{color:#00C853;}
+.n-avg-label{font-size:12px;font-weight:700;color:#4a5568;}
+.n-avg-label.usa{color:#00C853;}
+
+.n-track-wrap{padding-left:32px;}
+
+.n-track{position:relative;height:20px;}
+.n-bg{position:absolute;top:6px;left:0;right:0;height:8px;background:#f0f4f8;border-radius:4px;}
+.n-fill{position:absolute;top:6px;left:0;height:8px;border-radius:4px;}
+
+.n-range{position:absolute;top:9px;height:1.5px;background:#dde4ec;border-radius:1px;}
+.n-dot{position:absolute;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;}
+
+.n-players{display:flex;justify-content:space-between;margin-top:3px;}
+.n-player{font-size:10px;color:#b0bec5;max-width:48%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.n-player.right{text-align:right;}
+
+.ftr{padding:12px 28px;border-top:1px solid #e8eef2;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.ftr-note{font-size:11px;color:#c0cdd8;line-height:1.5;max-width:420px;}
+.brand{font-size:12px;font-weight:800;color:#00C853;letter-spacing:.04em;white-space:nowrap;}
+.brand span{color:#c0cdd8;font-weight:400;}
+
+@media(max-width:600px){
+  .hdr,.legend-row,.bars,.ftr{padding-left:16px;padding-right:16px;}
+  .n-track-wrap{padding-left:32px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr">
+  <div class="eyebrow">Action Network · World Cup 2026 · Data Study</div>
+  <div class="hdr-title">How Rested Is Each World Cup Squad? Average Minutes per Player Since August 2025</div>
+  <div class="hdr-sub">26-player squad averages · All competitions excl. Club World Cup · Ranked most to least fatigued</div>
+</div>
+
+<div class="legend-row">
+  <div class="leg"><div class="leg-bar" style="background:#00C853;"></div>USA</div>
+  <div class="leg"><div class="leg-bar" style="background:#2d3748;"></div>Most fatigued nations</div>
+  <div class="leg"><div class="leg-bar" style="background:#c8d5e0;"></div>Least fatigued nations</div>
+  <div class="leg">
+    <div class="leg-dots">
+      <div class="leg-dot" style="background:#c0cdd8;"></div>
+      <div class="leg-line"></div>
+      <div class="leg-dot" style="background:#2d3748;"></div>
+    </div>
+    Player range (least to most worked)
+  </div>
+</div>
+
+<div class="bars" id="bars"></div>
+
+<div class="ftr">
+  <div class="ftr-note">Source: Better Collective — Games &amp; Minutes, World Cup 2026 Squads. Aug 2025–Jun 2026. Club World Cup excluded.</div>
+  <div class="brand">ACTION<span> NETWORK</span></div>
+</div>
+
+</div>
+
+<script>
+const NATIONS = [
+  {name:'France',      avg:3636, max:4964, maxP:'Lacroix',     min:2251, minP:'L. Hernández', usa:false},
+  {name:'Germany',     avg:3434, max:4764, maxP:'Kimmich',     min:1174, minP:'Havertz',      usa:false},
+  {name:'Spain',       avg:3388, max:4770, maxP:'Unai Simón',  min:700,  minP:'Gavi',         usa:false},
+  {name:'Portugal',    avg:3357, max:4887, maxP:'D. Costa',    min:1808, minP:'Cancelo',      usa:false},
+  {name:'Brazil',      avg:3352, max:5109, maxP:'Léo Pereira', min:1789, minP:'Endrick',      usa:false},
+  {name:'Argentina',   avg:3132, max:4852, maxP:'J.M. López',  min:1310, minP:'L. Martínez', usa:false},
+  {name:'Belgium',     avg:3106, max:5084, maxP:'Vanaken',     min:64,   minP:'Lukaku',       usa:false},
+  {name:'Netherlands', avg:3080, max:5616, maxP:'Van Dijk',    min:1210, minP:'Kluivert',    usa:false},
+  {name:'Norway',      avg:2876, max:4609, maxP:'Haaland',     min:1305, minP:'Nyland',      usa:false},
+  {name:'USA',         avg:2823, max:4609, maxP:'C. Richards', min:758,  minP:'G. Reyna',    usa:true},
+];
+
+const SCALE = 5800;
+const p = v => (v / SCALE * 100).toFixed(2) + '%';
+
+// Colour ramp: rank 1 (most fatigued) = dark, rank 10 (USA) = green
+// Non-USA: interpolate from #1a2640 down to #8fa8be
+function barColor(i, total, isUsa) {
+  if (isUsa) return '#00C853';
+  // i goes 0..8 for non-USA nations (already sorted most to least)
+  const t = i / (total - 2); // 0 = most fatigued, 1 = least (Norway)
+  // dark: #1a2640  light: #a8bece
+  const r1=26,  g1=38,  b1=64;
+  const r2=168, g2=190, b2=206;
+  const r = Math.round(r1 + (r2-r1)*t);
+  const g = Math.round(g1 + (g2-g1)*t);
+  const b = Math.round(b1 + (b2-b1)*t);
+  return `rgb(${r},${g},${b})`;
+}
+
+const container = document.getElementById('bars');
+
+NATIONS.forEach((n, i) => {
+  const color = barColor(i, NATIONS.length, n.usa);
+
+  const block = document.createElement('div');
+  block.className = 'n-block';
+
+  const meta = document.createElement('div');
+  meta.className = 'n-meta';
+  meta.innerHTML = `
+    <span class="n-num">#${i+1}</span>
+    <span class="n-name${n.usa?' usa':''}">${n.name}</span>
+    <span class="n-avg-label${n.usa?' usa':''}">${n.avg.toLocaleString()} avg mins</span>
+  `;
+
+  const trackWrap = document.createElement('div');
+  trackWrap.className = 'n-track-wrap';
+
+  const track = document.createElement('div');
+  track.className = 'n-track';
+
+  const bg = document.createElement('div'); bg.className = 'n-bg';
+
+  const fill = document.createElement('div');
+  fill.className = 'n-fill';
+  fill.style.cssText = `width:${p(n.avg)};background:${color};`;
+
+  const rangeLeft  = parseFloat(p(n.min));
+  const rangeRight = parseFloat(p(n.max));
+  const rangeWidth = (rangeRight - rangeLeft).toFixed(2);
+
+  const range = document.createElement('div');
+  range.className = 'n-range';
+  range.style.cssText = `left:${p(n.min)};width:${rangeWidth}%;`;
+
+  const minDot = document.createElement('div');
+  minDot.className = 'n-dot';
+  minDot.style.cssText = `left:calc(${p(n.min)} - 3.5px);background:#c0cdd8;`;
+
+  const maxDot = document.createElement('div');
+  maxDot.className = 'n-dot';
+  maxDot.style.cssText = `left:calc(${p(n.max)} - 3.5px);background:#2d3748;`;
+
+  track.appendChild(bg);
+  track.appendChild(fill);
+  track.appendChild(range);
+  track.appendChild(minDot);
+  track.appendChild(maxDot);
+
+  const players = document.createElement('div');
+  players.className = 'n-players';
+  players.innerHTML = `<span class="n-player">${n.minP}</span><span class="n-player right">${n.maxP}</span>`;
+
+  trackWrap.appendChild(track);
+  trackWrap.appendChild(players);
+
+  block.appendChild(meta);
+  block.appendChild(trackWrap);
+  container.appendChild(block);
+});
+</script>
+</body>
+</html>
