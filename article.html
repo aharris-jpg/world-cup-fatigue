@@ -1,0 +1,551 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<div class="an-fatigue-article">
+<style>
+.an-fatigue-article *{box-sizing:border-box;margin:0;padding:0;}
+.an-fatigue-article{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:18px;line-height:1.75;
+  color:#0d1117;background:#ffffff;
+  max-width:760px;margin:0 auto;padding:0 0 60px;
+}
+
+/* HEADER */
+.an-fatigue-article .an-header{
+  padding:44px 48px 38px;
+  border-bottom:1px solid #e8eef2;
+  position:relative;
+}
+.an-fatigue-article .an-header::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,#00C853 0%,#69f0ae 50%,#00C853 100%);
+  background-size:200% 100%;animation:an-sh 2.4s linear infinite;
+}
+@keyframes an-sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.an-fatigue-article .an-eyebrow{
+  font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.13em;text-transform:uppercase;color:#00C853;
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.an-fatigue-article .an-eyebrow::after{content:'';flex:1;height:1px;background:#e8eef2;}
+.an-fatigue-article h1{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:clamp(24px,4vw,38px);font-weight:900;
+  line-height:1.08;color:#0d1117;letter-spacing:-0.025em;margin-bottom:18px;
+}
+.an-fatigue-article .an-deck{
+  font-size:18px;line-height:1.6;color:#4a5568;font-style:italic;
+  border-left:3px solid #00C853;padding-left:16px;margin-bottom:22px;
+}
+.an-fatigue-article .an-meta{
+  font-family:'Inter',system-ui,sans-serif;font-size:12px;color:#8a9ab0;
+  display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+}
+.an-fatigue-article .an-meta .sep{color:#dde4ec;}
+.an-fatigue-article .an-meta strong{color:#2d3748;}
+
+/* BODY */
+.an-fatigue-article .an-body{padding:0 48px;}
+
+/* H2 */
+.an-fatigue-article h2{
+  font-family:'Inter',system-ui,sans-serif;font-size:20px;font-weight:800;
+  color:#0d1117;letter-spacing:-0.01em;margin:48px 0 16px;
+  padding-bottom:10px;border-bottom:2px solid #f0f4f8;position:relative;
+}
+.an-fatigue-article h2::after{content:'';position:absolute;bottom:-2px;left:0;width:36px;height:2px;background:#00C853;}
+
+/* H3 */
+.an-fatigue-article h3{
+  font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:800;
+  color:#0d1117;margin:36px 0 4px;
+  display:flex;align-items:center;gap:10px;
+}
+.an-fatigue-article .an-rank-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:28px;height:28px;padding:0 7px;border-radius:5px;
+  background:#00C853;color:#fff;font-size:12px;font-weight:900;flex-shrink:0;
+}
+.an-fatigue-article .an-rank-badge.dim{background:#f0f4f8;color:#4a5568;}
+
+/* BODY TEXT */
+.an-fatigue-article p{font-size:18px;line-height:1.75;color:#1a2332;margin-bottom:20px;}
+.an-fatigue-article p b{color:#0d1117;font-weight:700;}
+.an-fatigue-article .an-intro p{font-size:19px;line-height:1.78;color:#1a2332;}
+.an-fatigue-article .an-intro p:first-of-type::first-letter{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:58px;font-weight:900;line-height:0.82;
+  float:left;margin:4px 9px 0 0;color:#00C853;
+}
+
+/* KEY FINDINGS */
+.an-fatigue-article .an-findings{
+  background:#f7fdf9;border:1px solid #c3eed4;
+  border-left:4px solid #00C853;border-radius:0 8px 8px 0;
+  padding:22px 26px;margin:28px 0 34px;
+}
+.an-fatigue-article .an-findings-label{
+  font-family:'Inter',system-ui,sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:0.12em;text-transform:uppercase;color:#00C853;margin-bottom:12px;
+}
+.an-fatigue-article .an-findings ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.an-fatigue-article .an-findings li{
+  font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.55;
+  color:#2d3748;padding-left:18px;position:relative;
+}
+.an-fatigue-article .an-findings li::before{content:'';position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:#00C853;}
+.an-fatigue-article .an-findings li b{color:#0d1117;}
+
+/* EMBED */
+.an-fatigue-article .an-embed{border:1px solid #e8eef2;border-radius:10px;overflow:hidden;margin:30px 0;}
+.an-fatigue-article .an-embed iframe{display:block;width:100%;border:none;}
+
+/* ENTRY META */
+.an-fatigue-article .an-entry-sub{
+  font-family:'Inter',system-ui,sans-serif;font-size:12px;
+  color:#8a9ab0;margin-bottom:10px;font-style:italic;
+}
+
+/* FATIGUE METER */
+.an-fatigue-article .an-meter{display:flex;align-items:center;gap:9px;margin:4px 0 12px;}
+.an-fatigue-article .an-meter-track{flex:1;height:4px;background:#f0f4f8;border-radius:2px;overflow:hidden;}
+.an-fatigue-article .an-meter-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#00a844,#00C853);}
+.an-fatigue-article .an-meter-val{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;color:#00C853;min-width:32px;text-align:right;}
+
+/* DATA PILLS */
+.an-fatigue-article .an-pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 28px;}
+.an-fatigue-article .an-pill{
+  font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:600;
+  padding:4px 10px;border-radius:18px;background:#f0f4f8;color:#4a5568;border:1px solid #dde4ec;
+}
+.an-fatigue-article .an-pill b{color:#00C853;}
+.an-fatigue-article .an-pill.hot{background:#f0fdf4;border-color:#86efac;color:#166534;}
+
+/* DIVIDER */
+.an-fatigue-article hr.an-divider{border:none;border-top:1px solid #e8eef2;margin:44px 0;}
+
+/* TABLE */
+.an-fatigue-article .an-table-wrap{overflow-x:auto;margin:16px 0 24px;}
+.an-fatigue-article table{width:100%;border-collapse:collapse;font-family:'Inter',system-ui,sans-serif;font-size:13px;}
+.an-fatigue-article thead th{background:#0d1117;color:#fff;font-weight:700;text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:0.07em;}
+.an-fatigue-article thead th:first-child{border-radius:5px 0 0 0;}
+.an-fatigue-article thead th:last-child{border-radius:0 5px 0 0;}
+.an-fatigue-article tbody tr{border-bottom:1px solid #f0f4f8;}
+.an-fatigue-article tbody tr:last-child{border-bottom:none;}
+.an-fatigue-article tbody td{padding:9px 12px;color:#4a5568;}
+.an-fatigue-article tbody td:first-child{color:#0d1117;font-weight:700;}
+.an-fatigue-article tbody tr.an-mls td:first-child{color:#00C853;}
+.an-fatigue-article tbody tr:hover{background:#f7fdf9;}
+
+/* EXPERT */
+.an-fatigue-article .an-expert{
+  border-left:4px solid #00C853;background:#f7fdf9;
+  padding:26px 30px;margin:28px 0;border-radius:0 8px 8px 0;
+}
+.an-fatigue-article .an-expert blockquote p{
+  font-size:17px;line-height:1.72;color:#2d3748;
+  font-style:italic;margin-bottom:14px;
+}
+.an-fatigue-article .an-expert blockquote p:last-of-type{margin-bottom:0;}
+.an-fatigue-article .an-attribution{
+  font-family:'Inter',system-ui,sans-serif;font-size:11px;
+  color:#8a9ab0;margin-top:14px;text-transform:uppercase;letter-spacing:0.08em;
+}
+
+
+/* STAT CALLOUTS */
+.an-fatigue-article .an-stat{
+  background:#f7fdf9;border-left:4px solid #00C853;
+  border-radius:0 8px 8px 0;
+  padding:16px 20px;margin:24px 0;
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+}
+.an-fatigue-article .an-stat-num{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:32px;font-weight:900;color:#00C853;
+  letter-spacing:-0.02em;line-height:1;flex-shrink:0;
+}
+.an-fatigue-article .an-stat-text{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:14px;line-height:1.5;color:#2d3748;font-weight:500;
+}
+.an-fatigue-article .an-stat-text b{color:#0d1117;}
+
+/* INSIGHT LABEL */
+.an-fatigue-article .an-insight{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:#00C853;margin:32px 0 8px;display:block;
+}
+
+/* CLOSER */
+.an-fatigue-article .an-closer{
+  font-size:16px;font-style:italic;color:#8a9ab0;
+  text-align:center;margin-top:36px;padding-top:22px;
+  border-top:1px solid #e8eef2;
+}
+
+/* INTERNAL LINKS */
+.an-fatigue-article .an-links{
+  font-family:'Inter',system-ui,sans-serif;font-size:13px;color:#8a9ab0;
+  padding:16px 0;border-top:1px solid #e8eef2;margin-top:36px;
+}
+.an-fatigue-article .an-links a{color:#00C853;text-decoration:none;font-weight:700;border-bottom:1px solid rgba(0,200,83,.28);}
+.an-fatigue-article .an-links a:hover{border-bottom-color:#00C853;}
+
+/* METHODOLOGY */
+.an-fatigue-article .an-methodology{
+  background:#f7f9fb;border:1px solid #e8eef2;border-radius:8px;
+  padding:24px 28px;margin-top:36px;
+}
+.an-fatigue-article .an-methodology h2{margin-top:0;font-size:16px;}
+.an-fatigue-article .an-methodology p{
+  font-family:'Inter',system-ui,sans-serif;font-size:13px;
+  line-height:1.7;color:#8a9ab0;margin-bottom:10px;
+}
+.an-fatigue-article .an-methodology p:last-child{margin-bottom:0;}
+.an-fatigue-article .an-methodology b{color:#4a5568;}
+
+/* SOURCES */
+.an-fatigue-article .an-sources ul{list-style:none;display:flex;flex-direction:column;gap:7px;padding:0;}
+.an-fatigue-article .an-sources li{
+  font-family:'Inter',system-ui,sans-serif;font-size:13px;
+  color:#8a9ab0;padding-left:14px;position:relative;
+}
+.an-fatigue-article .an-sources li::before{content:'—';position:absolute;left:0;color:#dde4ec;}
+.an-fatigue-article .an-sources a{color:#00C853;text-decoration:none;}
+.an-fatigue-article .an-sources a:hover{text-decoration:underline;}
+
+@media(max-width:600px){
+  .an-fatigue-article .an-header{padding:28px 20px 22px;}
+  .an-fatigue-article .an-body{padding:0 20px;}
+  .an-fatigue-article h1{font-size:24px;}
+  .an-fatigue-article p,.an-fatigue-article .an-intro p{font-size:17px;}
+  .an-fatigue-article .an-deck{font-size:16px;}
+  .an-fatigue-article .an-findings{padding:16px 18px;}
+  .an-fatigue-article .an-expert{padding:18px 20px;}
+  .an-fatigue-article .an-methodology{padding:18px 20px;}
+}
+</style>
+
+<!-- HEADER -->
+<div class="an-header">
+  <div class="an-eyebrow">Action Network &nbsp;·&nbsp; Data Study &nbsp;·&nbsp; World Cup 2026</div>
+  <h1>Arriving on Empty: Which USMNT Players Are Running on Fumes?</h1>
+  <p class="an-deck">A fatigue index ranking all 26 USA squad players by total minutes since August 2025, covering the numbers say about who's ready and who needs managing.</p>
+  <div class="an-meta">
+    <strong>Action Network Fatigue Analyst</strong>
+    <span class="sep">·</span>
+    <span>June 2026</span>
+    <span class="sep">·</span>
+    <span>Data: August 2025 – June 2026</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="an-body">
+
+<div class="an-intro" style="margin-top:38px;">
+<p>The USA is the freshest squad in this World Cup by average minutes played. Across 10 nations tracked, the USMNT averages <b>2,823 minutes</b> per player since August 2025. That is 813 fewer than France, the most-loaded squad in the dataset. That sounds like a clean advantage. It isn't.</p>
+
+<p>The squad average hides a <b>3,851-minute gap</b> between the most and least worked players. It is the widest internal spread of any nation in the study. Crystal Palace defender Chris Richards has logged 4,609 minutes. Giovanni Reyna has played 758. They are on the same World Cup roster.</p>
+
+<p>A fresh squad average means nothing if the first XI are already in the red. This data tells you exactly who they are.</p>
+</div>
+
+<!-- KEY FINDINGS -->
+
+<div class="an-stat">
+  <div class="an-stat-num">3,851</div>
+  <div class="an-stat-text">Minutes separate the most and least worked players on the USMNT roster. <b>The widest internal gap of any nation in the study.</b></div>
+</div>
+
+<h2>Key Findings</h2>
+<div class="an-findings">
+  <div class="an-findings-label">Six numbers that define the squad</div>
+  <ul>
+    <li><b>Chris Richards leads at 4,609 minutes</b>. He played 55 games across Crystal Palace and the national team, the heaviest load in the squad and the 18th highest of 260 players tracked across all 10 nations.</li>
+    <li><b>Only two players have crossed 4,000 minutes:</b> Richards and Weston McKennie (4,219 at Juventus). The rest of the squad sits well below that threshold.</li>
+    <li><b>The USA is the freshest squad of all 10 nations</b>, finishing below Norway (2,876) and 813 minutes below France. On aggregate, nobody arrives more rested.</li>
+    <li><b>MLS players average 82.7 minutes per game</b>, against 66.9 for their European-based teammates. Domestic players are being used harder per appearance, not easier.</li>
+    <li><b>Christian Pulisic ranks 21st of 26 in total minutes</b> at 2,169 across 41 games. The squad's biggest name is also one of its freshest legs.</li>
+    <li><b>Giovanni Reyna has played 758 minutes since August.</b> He arrives at a home World Cup almost entirely unplayed.</li>
+  </ul>
+</div>
+
+<!-- CHART EMBED -->
+<div class="an-embed">
+  <iframe src="https://USERNAME.github.io/REPO/chart.html" height="740" scrolling="no" title="USMNT Fatigue Index: Total Minutes Since August 2025"></iframe>
+</div>
+
+<!-- IMAGE 1 -->
+<div class="an-embed">
+  <iframe src="https://USERNAME.github.io/REPO/pic1.html" height="420" scrolling="no" title="USMNT defenders"></iframe>
+</div>
+
+<!-- TOP 10 -->
+<h2>The 10 Most Fatigued USMNT Players</h2>
+
+<!-- #1 -->
+
+<span class="an-insight">The load problem at the back</span>
+<div class="an-stat">
+  <div class="an-stat-num">4</div>
+  <div class="an-stat-text">Of the top 9 most-fatigued players are <b>central defenders.</b> The USA's back four is the most-worked unit on the squad.</div>
+</div>
+
+<h3><span class="an-rank-badge">1</span> Chris Richards</h3>
+<p class="an-entry-sub">Crystal Palace · Premier League · 55 games · 4,609 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:100%"></div></div><span class="an-meter-val">100</span></div>
+<p>Richards leads the squad by 390 minutes and ranks 18th of 260 players tracked across all 10 nations. A Premier League centre-back across 50 club appearances, he enters the tournament as the most-used player on the roster. His fitness coming into the tournament will be the single biggest variable in how the USMNT's back line holds up over five potential matches.</p>
+<div class="an-pills">
+  <div class="an-pill hot">Fatigue Index: <b>100</b></div>
+  <div class="an-pill">Total: <b>4,609 mins</b></div>
+  <div class="an-pill">Club: <b>4,221 mins</b></div>
+  <div class="an-pill">Games: <b>55</b></div>
+  <div class="an-pill">League: <b>Premier League</b></div>
+</div>
+
+<!-- #2 -->
+<h3><span class="an-rank-badge dim">2</span> Weston McKennie</h3>
+<p class="an-entry-sub">Juventus · Serie A · 53 games · 4,219 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:89.9%"></div></div><span class="an-meter-val">89.9</span></div>
+<p>McKennie and Richards are the only two players above 4,000 minutes. As a box-to-box midfielder, McKennie covers more ground per appearance than almost any other role. The same workload hits harder in that position. He is the engine of the USMNT midfield and also the second-most fatigued player on the squad.</p>
+<div class="an-pills">
+  <div class="an-pill hot">Fatigue Index: <b>89.9</b></div>
+  <div class="an-pill">Total: <b>4,219 mins</b></div>
+  <div class="an-pill">Club: <b>3,920 mins</b></div>
+  <div class="an-pill">Games: <b>53</b></div>
+  <div class="an-pill">League: <b>Serie A</b></div>
+</div>
+
+<!-- #3 -->
+<h3><span class="an-rank-badge dim">3</span> Auston Trusty</h3>
+<p class="an-entry-sub">Celtic · Scottish Premiership · 44 games · 3,780 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:78.5%"></div></div><span class="an-meter-val">78.5</span></div>
+<p>Trusty played 85.9 minutes per game at Celtic, the second-highest utilisation rate in the squad. He is a central defender, like Richards. The USMNT could begin the tournament with both starting centre-backs ranked first and third for minutes played. That is a structural fatigue problem that the squad average does not reflect.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>78.5</b></div>
+  <div class="an-pill">Total: <b>3,780 mins</b></div>
+  <div class="an-pill">Mins/Game: <b>85.9</b></div>
+  <div class="an-pill">Games: <b>44</b></div>
+</div>
+
+<!-- #4 -->
+<h3><span class="an-rank-badge dim">4</span> Folarin Balogun</h3>
+<p class="an-entry-sub">Monaco · Ligue 1 · 52 games · 3,709 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:76.6%"></div></div><span class="an-meter-val">76.6</span></div>
+<p>Balogun logged the second-highest international minute count in the squad at 458. That suggests he was a consistent USMNT starter throughout the preparation window, not a rotation option. His 52 combined appearances at Monaco and internationally leave little recovery buffer before the first match.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>76.6</b></div>
+  <div class="an-pill">Total: <b>3,709 mins</b></div>
+  <div class="an-pill">Intl: <b>458 mins</b></div>
+  <div class="an-pill">Games: <b>52</b></div>
+</div>
+
+<!-- #5 -->
+<span class="an-insight">The goalkeeper battle</span>
+<h3><span class="an-rank-badge dim">5</span> Matt Freese</h3>
+<p class="an-entry-sub">New York City FC · MLS · 41 games · 3,667 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:75.5%"></div></div><span class="an-meter-val">75.5</span></div>
+<p>Freese holds the highest international minute count of any player in the squad at <b>630 minutes</b>, almost 90 more than the next player. That is a meaningful vote of confidence from the coaching staff, and it marks Freese as the clear frontrunner for the starting goalkeeper role. It also means he arrives with a heavier load than any other player in the squad by international minutes alone.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>75.5</b></div>
+  <div class="an-pill">Total: <b>3,667 mins</b></div>
+  <div class="an-pill">Intl: <b>630 mins (squad high)</b></div>
+  <div class="an-pill">League: <b>MLS</b></div>
+</div>
+
+<!-- #6 -->
+<h3><span class="an-rank-badge dim">6</span> Timothy Weah</h3>
+<p class="an-entry-sub">Marseille · Ligue 1 · 47 games · 3,514 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:71.6%"></div></div><span class="an-meter-val">71.6</span></div>
+<p>A wide forward averaging 74.8 minutes per game at Marseille. High sprint-frequency positions amplify the effect of accumulated minutes differently from defenders. Weah's 47 appearances in the period suggest he was a consistent starter, not managed carefully into the tournament.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>71.6</b></div>
+  <div class="an-pill">Total: <b>3,514 mins</b></div>
+  <div class="an-pill">Games: <b>47</b></div>
+  <div class="an-pill">League: <b>Ligue 1</b></div>
+</div>
+
+<!-- #7 -->
+<h3><span class="an-rank-badge dim">7</span> Sebastian Berhalter</h3>
+<p class="an-entry-sub">Vancouver Whitecaps FC · MLS · 42 games · 3,408 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:68.8%"></div></div><span class="an-meter-val">68.8</span></div>
+<p>Berhalter is the second MLS player in the top 10 and averages 81.1 minutes per appearance, one of the highest rates in the squad. Despite playing in a league with a shorter calendar than European football, his per-game utilisation rivals the heaviest-used European-based players. That is the MLS paradox in one data point.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>68.8</b></div>
+  <div class="an-pill">Total: <b>3,408 mins</b></div>
+  <div class="an-pill">Mins/Game: <b>81.1</b></div>
+  <div class="an-pill">League: <b>MLS</b></div>
+</div>
+
+<!-- #8 -->
+<h3><span class="an-rank-badge dim">8</span> Sergiño Dest</h3>
+<p class="an-entry-sub">PSV · Eredivisie · 43 games · 3,263 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:65%"></div></div><span class="an-meter-val">65.0</span></div>
+<p>Dest played 43 times for 3,263 minutes across PSV and international duty. PSV also competed in European football this season, extending the calendar beyond the Dutch league. Dest enters the tournament fit and used, which is the right profile for a player who missed significant time in the previous cycle through injury.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>65.0</b></div>
+  <div class="an-pill">Total: <b>3,263 mins</b></div>
+  <div class="an-pill">Club: <b>3,004 mins</b></div>
+  <div class="an-pill">League: <b>Eredivisie</b></div>
+</div>
+
+<!-- #9 -->
+<h3><span class="an-rank-badge dim">9</span> Mark McKenzie</h3>
+<p class="an-entry-sub">Toulouse · Ligue 1 · 40 games · 3,120 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:61.3%"></div></div><span class="an-meter-val">61.3</span></div>
+<p>McKenzie is the fourth central defender in the top nine. It is the most significant positional pattern in this dataset. The USA's back four collectively carries the heaviest fatigue load on the squad. That is a risk profile worth naming before the first match.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>61.3</b></div>
+  <div class="an-pill">Total: <b>3,120 mins</b></div>
+  <div class="an-pill">Club: <b>2,787 mins</b></div>
+  <div class="an-pill">League: <b>Ligue 1</b></div>
+</div>
+
+<!-- #10 -->
+<h3><span class="an-rank-badge dim">10</span> Max Arfsten</h3>
+<p class="an-entry-sub">Columbus Crew · MLS · 39 games · 3,107 mins</p>
+<div class="an-meter"><div class="an-meter-track"><div class="an-meter-fill" style="width:61%"></div></div><span class="an-meter-val">61.0</span></div>
+<p>Arfsten closes the top 10 with 481 international minutes, the third-highest in the squad. Three of the ten most-fatigued USMNT players play their club football in MLS. The league's reputation as a low-load environment is not supported by this data.</p>
+<div class="an-pills">
+  <div class="an-pill">Fatigue Index: <b>61.0</b></div>
+  <div class="an-pill">Total: <b>3,107 mins</b></div>
+  <div class="an-pill">Intl: <b>481 mins</b></div>
+  <div class="an-pill">League: <b>MLS</b></div>
+</div>
+
+
+<div class="an-stat">
+  <div class="an-stat-num">21st</div>
+  <div class="an-stat-text">Where Christian Pulisic ranks in squad minutes at 2,169. <b>The biggest name on the roster is one of the freshest players on it.</b></div>
+</div>
+
+<!-- IMAGE 2 -->
+<div class="an-embed">
+  <iframe src="https://USERNAME.github.io/REPO/pic2.html" height="420" scrolling="no" title="Weston McKennie Juventus"></iframe>
+</div>
+
+<hr class="an-divider">
+
+<!-- NATIONS SECTION -->
+<span class="an-insight">The global picture</span>
+<h2>How the USA Compares to the Other Nine Nations</h2>
+
+<p>The USMNT's individual fatigue rankings only tell half the story. Set the squad against the other nine nations tracked and the context sharpens: the USA is the <b>freshest squad in the field by average minutes</b>, but the gap to second-place Norway is just 53 minutes. The gap to France at the top is 813.</p>
+
+<div class="an-embed">
+  <iframe src="https://USERNAME.github.io/REPO/nations.html" height="520" scrolling="no" title="World Cup 2026 Squad Fatigue by Nation"></iframe>
+</div>
+
+<p>France leads at 3,636 average minutes per player. That is 813 more than the USA. Germany, Spain, Portugal and Brazil all sit above 3,350. The traditional powerhouses carry heavier squad loads because their club players are in leagues with deeper European runs and longer domestic seasons.</p>
+
+<p>The most striking cross-national data point: Virgil van Dijk (Netherlands) leads all 260 players tracked at <b>5,616 minutes</b>, more than 1,000 ahead of the USA's most-worked player, Chris Richards. Belgium's Hans Vanaken (5,084) and Brazil's Léo Pereira (5,109) round out the top of the global list. None of those players are American.</p>
+
+<p>The USA's position at the bottom of the nation rankings is not an accident. It reflects a squad built largely from players in shorter-season leagues: MLS, the Scottish Premiership, Ligue 1   rather than the Champions League regulars who dominate the top of the table. That is the structural reason the average is low. Whether it translates into a genuine physical edge over five potential matches remains to be seen.</p>
+
+<hr class="an-divider">
+
+<!-- CALLOUT -->
+<span class="an-insight">The MLS myth</span>
+<h2>The MLS Paradox: Domestic Players Work Harder Per Game</h2>
+
+
+<div class="an-stat">
+  <div class="an-stat-num">82.7</div>
+  <div class="an-stat-text">Average minutes per game for MLS-based players. Their European teammates average <b>66.9</b>. Domestic players are being used harder per appearance, not easier.</div>
+</div>
+
+<p>The assumption is that MLS players arrive at tournaments fresher. Shorter season,, lower intensity. The data says otherwise.</p>
+
+<p>The 8 MLS-based players in the USMNT squad average <b>82.7 minutes per appearance</b>. Their 18 European-based teammates average <b>66.9</b>. That is a 15.8-minute gap running in the opposite direction to conventional wisdom. MLS managers are using these players more completely per match: fewer rotations, longer stints.</p>
+
+<p>Total minutes are closer   MLS players average 2,871 against 2,801 for European players, but the per-game figure reveals how they got there.</p>
+
+<div class="an-table-wrap">
+<table>
+  <thead>
+    <tr><th>Player</th><th>Club</th><th>Total Mins</th><th>Games</th><th>Mins/Game</th></tr>
+  </thead>
+  <tbody>
+    <tr class="an-mls"><td>Matt Freese</td><td>New York City FC</td><td>3,667</td><td>41</td><td>89.4</td></tr>
+    <tr class="an-mls"><td>Chris Brady</td><td>Chicago Fire FC</td><td>2,565</td><td>29</td><td>88.4</td></tr>
+    <tr class="an-mls"><td>Matt Turner</td><td>New England Revolution</td><td>2,295</td><td>26</td><td>88.3</td></tr>
+    <tr class="an-mls"><td>Tim Ream</td><td>Charlotte FC</td><td>2,668</td><td>31</td><td>86.1</td></tr>
+    <tr class="an-mls"><td>Sebastian Berhalter</td><td>Vancouver Whitecaps FC</td><td>3,408</td><td>42</td><td>81.1</td></tr>
+    <tr class="an-mls"><td>Max Arfsten</td><td>Columbus Crew</td><td>3,107</td><td>39</td><td>79.7</td></tr>
+    <tr class="an-mls"><td>Miles Robinson</td><td>FC Cincinnati</td><td>2,205</td><td>29</td><td>76.0</td></tr>
+    <tr class="an-mls"><td>Cristian Roldan</td><td>Seattle Sounders FC</td><td>3,054</td><td>42</td><td>72.7</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Compare that with Christian Pulisic at 52.9 minutes per game, Ricardo Pepi at 48.2, and Giovanni Reyna at 30.3. These are three European-based players whose clubs used them sparingly. Remove those three outliers and the European average rises to around 74 minutes per game. MLS still leads.</p>
+
+<!-- IMAGE 3 -->
+<div class="an-embed">
+  <iframe src="https://USERNAME.github.io/REPO/pic3.html" height="420" scrolling="no" title="MLS stadium"></iframe>
+</div>
+
+<hr class="an-divider">
+
+<!-- EXPERT -->
+<h2>Expert Comment</h2>
+<div class="an-expert">
+  <blockquote>
+    <p>"The USA enters this tournament with the freshest squad on paper. 2,823 minutes per player, the lowest of any nation we tracked. That matters. A condensed knockout schedule tests recovery, and fresher squads tend to run harder in the final stages."</p>
+    <p>"But the aggregate hides the real story. Richards and McKennie have carried loads that put them in the same bracket as the most-worked players in France and Germany. A low squad average can still mean a fatigued first XI."</p>
+    <p>"The MLS data is the most counterintuitive finding. Domestic players are arriving with higher per-game utilisation than their European teammates: 82.7 minutes per appearance versus 66.9. MLS coaches are not resting these players. They are starting them and keeping them on."</p>
+    <p>"The teams that go deep in tournaments rotate smartest in the early rounds. Richards and McKennie need managing. Reyna at 758 minutes is an almost fully-rested asset. The data tells you exactly where to spend that freshness."</p>
+  </blockquote>
+  <div class="an-attribution">Action Network Fatigue Analyst</div>
+</div>
+
+<!-- CONCLUSION -->
+
+<div class="an-stat">
+  <div class="an-stat-num">758</div>
+  <div class="an-stat-text">Minutes played by Giovanni Reyna since August 2025. <b>He is the closest thing this squad has to a fully-rested impact player.</b></div>
+</div>
+
+<h2>The Freshest Squad in the Tournament. With a Problem Buried Inside.</h2>
+
+<p>The USMNT's aggregate load is the lightest of 10 nations tracked. That is a real advantage in a tournament where games come every four to six days. Squads that arrive with more in the tank tend to run harder when it counts.</p>
+
+<p>The planning implication is specific. Richards and McKennie need careful management through the group stage. Pulisic, at 2,169 minutes across 41 games, is a rotation asset despite being the marquee name. Reyna at 758 minutes is the closest thing this squad has to a fully-rested impact player.</p>
+
+<p>The 3,851-minute gap between the most and least worked players is the widest of any nation in this study. Other squads arrived more evenly loaded. The USA arrived with a management problem disguised as an asset.</p>
+
+<p class="an-closer"><em>The freshest squad wins nothing. The best-managed one might.</em></p>
+
+<!-- INTERNAL LINKS -->
+<div class="an-links">
+  Track every line movement ahead of the tournament with the latest <a href="https://www.actionnetwork.com/soccer/world-cup-odds" target="_blank" rel="noopener">World Cup odds</a> and follow the <a href="https://www.actionnetwork.com/soccer/world-cup-futures" target="_blank" rel="noopener">World Cup futures board</a> at Action Network.
+</div>
+
+<!-- METHODOLOGY -->
+<div class="an-methodology">
+  <h2>Methodology</h2>
+  <p><b>What we measured:</b> Total minutes across all club and international competitions from 1 August 2025 through June 2026, excluding the FIFA Club World Cup. Data covers all 26 USA World Cup squad members across 10 nations: France, Brazil, Spain, Argentina, Germany, Belgium, Netherlands, Portugal, Norway, and the USA.</p>
+  <p><b>Fatigue Index:</b> Normalised 0–100 within the USA squad. The player with the highest total minutes (Chris Richards, 4,609) scores 100. The lowest (Giovanni Reyna, 758) scores 0. All others scale proportionally. The index is squad-relative, not cross-national.</p>
+  <p><b>Exclusions:</b> FIFA Club World Cup appearances removed for consistent cross-player comparison. Álex Zendejas (Club América, Liga MX) classified as non-MLS for this analysis.</p>
+  <p><b>Data extracted:</b> June 2026.</p>
+</div>
+
+<!-- SOURCES -->
+<div class="an-sources" style="margin-top:28px;">
+  <h2>Sources</h2>
+  <ul>
+    <li>Better Collective: <a href="#" target="_blank" rel="noopener">Games and Minutes, World Cup 2026 Squads (proprietary dataset)</a></li>
+    <li>FIFA: <a href="https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">2026 FIFA World Cup, Official Tournament Page</a></li>
+    <li>U.S. Soccer Federation: <a href="https://www.ussoccer.com/teams/usmnt" target="_blank" rel="noopener">USMNT Official Roster</a></li>
+    <li>Premier League: <a href="https://www.premierleague.com/stats" target="_blank" rel="noopener">Official Season Statistics</a></li>
+    <li>MLS: <a href="https://www.mlssoccer.com/stats" target="_blank" rel="noopener">Official Season Statistics</a></li>
+  </ul>
+</div>
+
+</div><!-- /an-body -->
+</div><!-- /an-fatigue-article -->
